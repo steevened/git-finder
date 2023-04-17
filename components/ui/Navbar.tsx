@@ -1,32 +1,16 @@
 import { useEffect, useState } from 'react';
-import {
-  Typography,
-  Navbar,
-  Button,
-  IconButton,
-  MobileNav,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Input,
-} from '@material-tailwind/react';
+import { Navbar, Button, MobileNav } from '@material-tailwind/react';
 import Link from 'next/link';
-import {
-  MoonIcon,
-  MoonIconOut,
-  SearchIcon,
-  SunIcon,
-  SunIconOut,
-  SystemIcon,
-  SystemOut,
-} from './Svgs';
+
 import ToggleThemeMenu from './ToggleThemeMenu';
 import SearchInput from './SearchInput';
 import IconMenu from './IconMenu';
+import { BackIcon } from './Svgs';
+import { useRouter } from 'next/router';
 
 const NavbarComponent = () => {
   const [openNav, setOpenNav] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     window.addEventListener(
@@ -35,55 +19,21 @@ const NavbarComponent = () => {
     );
   }, []);
 
-  // const navList = (
-  //   <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 ">
-  //     <Typography
-  //       as="li"
-  //       variant="small"
-  //       color="blue-gray"
-  //       className="p-1 font-normal"
-  //     >
-  //       <a href="#" className="flex items-center">
-  //         Pages
-  //       </a>
-  //     </Typography>
-  //     <Typography
-  //       as="li"
-  //       variant="small"
-  //       color="blue-gray"
-  //       className="p-1 font-normal"
-  //     >
-  //       <a href="#" className="flex items-center">
-  //         Account
-  //       </a>
-  //     </Typography>
-  //     <Typography
-  //       as="li"
-  //       variant="small"
-  //       color="blue-gray"
-  //       className="p-1 font-normal"
-  //     >
-  //       <a href="#" className="flex items-center">
-  //         Blocks
-  //       </a>
-  //     </Typography>
-  //     <Typography
-  //       as="li"
-  //       variant="small"
-  //       color="blue-gray"
-  //       className="p-1 font-normal"
-  //     >
-  //       <a href="#" className="flex items-center">
-  //         Docs
-  //       </a>
-  //     </Typography>
-  //   </ul>
-  // );
-
   return (
-    <Navbar className="fixed max-w-screen-xl px-4 py-2 mx-auto mt-5 -translate-x-1/2 border-none left-1/2 lg:px-8 lg:py-4 dark:bg-blue-gray-900/90 darktext-gray-100">
+    <Navbar className="fixed z-50 max-w-screen-xl px-4 py-2 mx-auto mt-5 -translate-x-1/2 border-none left-1/2 lg:px-8 lg:py-4 bg-blue-gray-50/10 dark:bg-blue-gray-900/90 dark:text-gray-100">
       <div className="container flex items-center justify-between mx-auto ">
-        <div className="">
+        <div className="flex items-center">
+          {router.pathname !== '/' && (
+            <div className="">
+              <Button
+                variant="text"
+                onClick={() => router.back()}
+                className="rounded-full p-3"
+              >
+                <BackIcon />
+              </Button>
+            </div>
+          )}
           <Link href="/" className="font-semibold ">
             <Button variant="text" size="md">
               GitHub Finder
@@ -91,7 +41,7 @@ const NavbarComponent = () => {
           </Link>
         </div>
         <div className="hidden md:block">
-          <SearchInput />
+          <SearchInput setOpenNav={setOpenNav} />
         </div>
         <div className="hidden lg:block">
           <ToggleThemeMenu />
@@ -101,11 +51,14 @@ const NavbarComponent = () => {
         </div>
       </div>
       <MobileNav open={openNav}>
-        <div className="container mx-auto">
+        <div className="container mx-auto space-y-5 py-5">
           {/* {navList} */}
-          <Button variant="gradient" size="sm" className="mb-2">
-            <span>Buy Now</span>
-          </Button>
+          <div className=" w-fit mx-auto">
+            <SearchInput setOpenNav={setOpenNav} />
+          </div>
+          <div className=" w-fit mx-auto">
+            <ToggleThemeMenu />
+          </div>
         </div>
       </MobileNav>
     </Navbar>

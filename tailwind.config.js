@@ -4,7 +4,6 @@ const withMT = require('@material-tailwind/react/utils/withMT');
 
 module.exports = withMT({
   darkMode: 'class',
-  important: true,
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -12,6 +11,13 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

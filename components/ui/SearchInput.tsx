@@ -1,16 +1,25 @@
 import { Button, Input } from '@material-tailwind/react';
 import { SearchIcon } from './Svgs';
 import { useRouter } from 'next/router';
-import { FormEvent, useState } from 'react';
+import { FC, FormEvent, useState } from 'react';
 
-const SearchInput = () => {
+interface Props {
+  setOpenNav: (open: boolean) => void;
+}
+
+const SearchInput: FC<Props> = ({ setOpenNav }) => {
   const router = useRouter();
   const [text, setText] = useState<string>('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push('/search');
+    router.push({
+      pathname: '/search',
+      query: { q: text },
+    });
+
     setText('');
+    setOpenNav(false);
   };
 
   return (

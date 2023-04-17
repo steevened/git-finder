@@ -6,7 +6,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <NavbarComponent />
-      <main className="container max-w-screen-xl px-5 pt-32 mx-auto">
+      <main className="container max-w-screen-xl px-5  pt-28 mx-auto">
         {children}
       </main>
     </>
