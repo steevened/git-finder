@@ -11,7 +11,7 @@ const HomePage: NextPageWithLayout = () => {
         // role="button"
         className="flex items-center justify-center w-full max-w-xs rounded-lg shadow-lg bg-blue-gray-200 dark:bg-blue-gray-700 aspect-square"
       >
-        <h2 className="text-3xl font-bold">Favorite Users</h2>
+        <h2 className="text-3xl font-bold">Favourite Users</h2>
       </Button>
     </div>
   );
