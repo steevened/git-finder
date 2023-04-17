@@ -1,3 +1,4 @@
+import { UserOnFavorites } from '@/lib/interfaces/user.interface';
 import { User } from '@/lib/interfaces/users.interface';
 import { Button } from '@material-tailwind/react';
 import Image from 'next/image';
@@ -5,15 +6,17 @@ import { useRouter } from 'next/router';
 import { FC } from 'react';
 
 interface Props {
-  user: User;
+  login: string;
+  avatar_url: string;
+  type: string;
 }
 
-export const UserCard: FC<Props> = ({ user }) => {
+export const UserCard: FC<Props> = ({ login, avatar_url, type }) => {
   const router = useRouter();
 
   const handleClick = () => {
     router.push({
-      pathname: `/user/${user.login}`,
+      pathname: `/user/${login}`,
     });
   };
   return (
@@ -35,7 +38,7 @@ export const UserCard: FC<Props> = ({ user }) => {
     >
       <div className="relative h-24 overflow-hidden rounded-lg bg-blue-gray-900/10 dark:bg-gray-100/10 after:absolute after:inset-0 after:bg-blue-gray-900/40 ">
         <Image
-          src={user.avatar_url}
+          src={avatar_url}
           alt="github profile"
           className="object-cover w-full h-full "
           width="1000"
@@ -44,10 +47,10 @@ export const UserCard: FC<Props> = ({ user }) => {
       </div>
       <div className="space-y-2 text-left">
         <div className="text-lg">
-          <p>{user.login}</p>
+          <p>{login}</p>
         </div>
         <div className="text-opacity-10">
-          <p className="">{user.type}</p>
+          <p className="">{type}</p>
         </div>
         <div className="">
           <p></p>
