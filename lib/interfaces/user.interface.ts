@@ -48,3 +48,9 @@ export interface Plan {
   collaborators: number;
   private_repos: number;
 }
+
+export interface UserOnFavorites {
+  login: string;
+  avatar_url: string;
+  type: string;
+}

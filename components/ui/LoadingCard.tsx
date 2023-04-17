@@ -5,7 +5,7 @@ const LoadingCard = () => {
     <Button
       disabled
       variant="text"
-      className="w-[200px] 
+      className="w-full max-w-[200px] 
   p-4 
   space-y-5 
   rounded-2xl 

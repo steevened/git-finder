@@ -23,6 +23,8 @@ const UserPage: NextPageWithLayout = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error</p>;
 
+  console.log(data.html_url);
+
   return (
     <>
       <div className=" grid grid-cols-1 md:grid-cols-3 md:gap-5 my-4">
@@ -32,7 +34,18 @@ const UserPage: NextPageWithLayout = () => {
           name={data.name}
         />
 
-        <DetailsProfileCard data={data} />
+        <DetailsProfileCard
+          bio={data.bio}
+          blog={data.blog}
+          hireable={data.hireable ? data.hireable : false}
+          html_url={data.html_url}
+          location={data.location}
+          name={data.name}
+          twitter_username={data.twitter_username ? data.twitter_username : ''}
+          type={data.type}
+          login={data.login}
+          avatar_url={data.avatar_url}
+        />
       </div>
       <DescriptionUserCard data={data} />
     </>
