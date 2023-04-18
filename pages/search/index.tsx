@@ -16,8 +16,6 @@ const SearchPage: NextPageWithLayout = () => {
 
   const { data, isLoading, isError, error } = useUsers(searchText);
 
-  console.log(error);
-
   if (isError)
     return (
       <div className="text-blue-gray-700 dark:text-blue-gray-300 absolute inset-0 grid place-content-center">
@@ -31,6 +29,21 @@ const SearchPage: NextPageWithLayout = () => {
         <title>Search - Github Finder</title>
       </Head>
       <div className="my-10">
+        {data?.items.length === 0 && (
+          <div className="text-blue-gray-700 dark:text-blue-gray-300 flex flex-col items-center justify-center w-full max-w-lg mx-auto gap-5 ">
+            <h1 className="text-2xl font-bold my-10 text-center">
+              Keep searching! There are no results for your current search, but
+              we&apos;re sure you&apos;ll find what you&apos;re looking for.
+            </h1>
+            <Button
+              color="blue"
+              // size="regular"
+              onClick={() => router.back()}
+            >
+              Go Back
+            </Button>
+          </div>
+        )}
         <CardsGridContainer>
           {isLoading ? (
             <>

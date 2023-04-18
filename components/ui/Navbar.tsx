@@ -46,7 +46,7 @@ const NavbarComponent = () => {
         <div className="hidden md:block flex-1 text-end">
           <ToggleThemeMenu />
         </div>
-        <div className="md:hidden flex-[0.1] text-end test">
+        <div className="md:hidden flex-[0.1] text-end">
           <IconMenu openNav={openNav} setOpenNav={setOpenNav} />
         </div>
       </div>
