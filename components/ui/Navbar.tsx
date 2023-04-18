@@ -20,9 +20,9 @@ const NavbarComponent = () => {
   }, []);
 
   return (
-    <Navbar className="fixed z-50 max-w-screen-xl px-4 py-2 mx-auto mt-5 -translate-x-1/2 border-none left-1/2 lg:px-8 lg:py-4 bg-blue-gray-50/10 dark:bg-blue-gray-900/90 dark:text-gray-100">
+    <Navbar className="fixed z-50 max-w-screen-xl px-4 py-2 mx-auto mt-5 -translate-x-1/2 border-none left-1/2 lg:px-8 lg:py-4 bg-blue-gray-50/10 dark:bg-blue-gray-900/90 dark:text-gray-100 w-[90%]">
       <div className="container flex items-center justify-between mx-auto ">
-        <div className="flex items-center">
+        <div className="flex items-center flex-1">
           {router.pathname !== '/' && (
             <div className="">
               <Button
@@ -40,13 +40,13 @@ const NavbarComponent = () => {
             </Button>
           </Link>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:block flex-1">
           <SearchInput setOpenNav={setOpenNav} />
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden lg:block flex-1 text-end">
           <ToggleThemeMenu />
         </div>
-        <div className="lg:hidden">
+        <div className="lg:hidden flex-1 text-end">
           <IconMenu openNav={openNav} setOpenNav={setOpenNav} />
         </div>
       </div>
