@@ -43,10 +43,10 @@ const NavbarComponent = () => {
         <div className="hidden md:block flex-1">
           <SearchInput setOpenNav={setOpenNav} />
         </div>
-        <div className="hidden lg:block flex-1 text-end">
+        <div className="hidden md:block flex-1 text-end">
           <ToggleThemeMenu />
         </div>
-        <div className="lg:hidden flex-1 text-end">
+        <div className="md:hidden flex-[0.1] text-end test">
           <IconMenu openNav={openNav} setOpenNav={setOpenNav} />
         </div>
       </div>
